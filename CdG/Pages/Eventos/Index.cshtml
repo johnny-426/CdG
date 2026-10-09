@@ -43,7 +43,11 @@ else
                 @foreach (var evento in Model.Eventos)
                 {
                     <tr>
-                        <td>@evento.Nome</td>
+                        <td>
+                            <a asp-page="/Eventos/Detalhes" asp-route-id="@evento.Id">
+                                @evento.Nome
+                            </a>
+                        </td>
                         <td>@Model.FormatarData(evento.DataHora)</td>
                         <td>@evento.Local</td>
                         <td>@evento.Status</td>

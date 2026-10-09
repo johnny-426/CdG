@@ -1,0 +1,56 @@
+﻿@page "{id:int}"
+@model CdG.Pages.Eventos.DetalhesModel
+
+@{
+    ViewData["Title"] = Model.Evento.Nome;
+}
+
+<h1>@Model.Evento.Nome</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Descrição</dt>
+    <dd class="col-sm-9" style="white-space: pre-wrap;">@(string.IsNullOrWhiteSpace(Model.Evento.Descricao) ? "Sem descrição." : Model.Evento.Descricao)</dd>
+
+    <dt class="col-sm-3">Data e horário</dt>
+    <dd class="col-sm-9">
+        @Model.DataFormatada
+        @if (Model.Evento.DataHora.HasValue)
+        {
+            <span class="text-muted"> — horário de Brasília</span>
+        }
+    </dd>
+
+    <dt class="col-sm-3">Local</dt>
+    <dd class="col-sm-9">@Model.Evento.Local</dd>
+
+    <dt class="col-sm-3">Situação</dt>
+    <dd class="col-sm-9">
+        @(Model.Evento.Status == CdG.Models.StatusEvento.Concluido
+            ? "Concluído"
+            : Model.Evento.Status.ToString())
+    </dd>
+
+    <dt class="col-sm-3">Limite de participantes</dt>
+    <dd class="col-sm-9">
+        @(Model.Evento.LimiteParticipantes?.ToString() ?? "Sem limite")
+    </dd>
+</dl>
+
+   @if (Model.Evento.Status == CdG.Models.StatusEvento.Agendado ||
+     Model.Evento.Status == CdG.Models.StatusEvento.Adiado)
+{
+    <form method="post"
+          asp-page-handler="Cancelar"
+          asp-route-id="@Model.Evento.Id"
+          class="mb-3"
+          onsubmit="return confirm('Cancelar este evento? Ele continuará disponível no histórico.');">
+
+        <button type="submit" class="btn btn-danger">
+            Cancelar evento
+        </button>
+    </form>
+}
+
+<a asp-page="/Eventos/Index" class="btn btn-secondary">
+    Voltar para meus eventos
+</a>
