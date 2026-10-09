@@ -91,6 +91,39 @@ namespace CdG.Pages.Eventos
 
             return RedirectToPage("/Eventos/Index");
         }
+        public async Task<IActionResult> OnPostConcluirAsync(int id)
+        {
+            var usuarioId = _userManager.GetUserId(User);
 
+            if (usuarioId == null)
+                return Challenge();
+
+            var evento = await _context.Eventos
+                .FirstOrDefaultAsync(evento =>
+                    evento.Id == id &&
+                    evento.CriadorId == usuarioId);
+
+            if (evento == null)
+                return NotFound();
+
+            if (evento.Status != StatusEvento.Agendado ||
+                !evento.DataHora.HasValue ||
+                evento.DataHora.Value > DateTime.UtcNow)
+            {
+                TempData["Mensagem"] =
+                    "Só é possível concluir um evento agendado cujo horário já chegou.";
+
+                return RedirectToPage("/Eventos/Index");
+            }
+
+            evento.Status = StatusEvento.Concluido;
+            evento.AtualizadoEm = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            TempData["Mensagem"] = "Evento concluído com sucesso.";
+
+            return RedirectToPage("/Eventos/Index");
+        }
     }
 } 

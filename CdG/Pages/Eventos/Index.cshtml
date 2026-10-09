@@ -50,7 +50,11 @@ else
                         </td>
                         <td>@Model.FormatarData(evento.DataHora)</td>
                         <td>@evento.Local</td>
-                        <td>@evento.Status</td>
+                        <td>
+                            @(evento.Status == CdG.Models.StatusEvento.Concluido
+                                ? "Concluído"
+                                : evento.Status.ToString())
+                        </td>
                         <td>
                             @(evento.LimiteParticipantes?.ToString()
                                 ?? "Sem limite")
