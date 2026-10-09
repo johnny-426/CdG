@@ -14,6 +14,8 @@ namespace CdG.Data
 
         public DbSet<Evento> Eventos { get; set; }
 
+        public DbSet<VinculoEvento> VinculosEvento { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -23,6 +25,26 @@ namespace CdG.Data
                 .WithMany()
                 .HasForeignKey(evento => evento.CriadorId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<VinculoEvento>()
+                .HasOne(vinculo => vinculo.Evento)
+                .WithMany()
+                .HasForeignKey(vinculo => vinculo.EventoId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<VinculoEvento>()
+                .HasOne(vinculo => vinculo.Usuario)
+                .WithMany()
+                .HasForeignKey(vinculo => vinculo.UsuarioId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<VinculoEvento>()
+                .HasIndex(vinculo => new
+                {
+                    vinculo.EventoId,
+                    vinculo.UsuarioId
+                })
+                .IsUnique();
         }
     }
 }

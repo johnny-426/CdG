@@ -70,6 +70,40 @@ namespace CdG.Migrations
                     b.ToTable("Eventos");
                 });
 
+            modelBuilder.Entity("CdG.Models.VinculoEvento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EventoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Papel")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("PresencaAtualizadaEm")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("StatusPresenca")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UsuarioId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.HasIndex("EventoId", "UsuarioId")
+                        .IsUnique();
+
+                    b.ToTable("VinculosEvento");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -279,6 +313,25 @@ namespace CdG.Migrations
                         .IsRequired();
 
                     b.Navigation("Criador");
+                });
+
+            modelBuilder.Entity("CdG.Models.VinculoEvento", b =>
+                {
+                    b.HasOne("CdG.Models.Evento", "Evento")
+                        .WithMany()
+                        .HasForeignKey("EventoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Evento");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

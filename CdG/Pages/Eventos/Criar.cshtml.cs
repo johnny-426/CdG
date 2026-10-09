@@ -84,7 +84,17 @@ namespace CdG.Pages.Eventos
                 AtualizadoEm = agora
             };
 
-            _context.Eventos.Add(evento);
+            var vinculoOrganizador = new VinculoEvento
+            {
+                Evento = evento,
+                UsuarioId = usuario.Id,
+                Papel = PapelEvento.Organizador,
+                StatusPresenca = StatusPresenca.Confirmada,
+                PresencaAtualizadaEm = agora
+            };
+
+            _context.VinculosEvento.Add(vinculoOrganizador);
+
             await _context.SaveChangesAsync();
 
             Mensagem = "Evento criado com sucesso!";
