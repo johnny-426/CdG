@@ -39,6 +39,13 @@
    @if (Model.Evento.Status == CdG.Models.StatusEvento.Agendado ||
      Model.Evento.Status == CdG.Models.StatusEvento.Adiado)
 {
+    <p>
+        <a asp-page="/Eventos/Editar"
+           asp-route-id="@Model.Evento.Id"
+           class="btn btn-primary">
+            Editar evento
+        </a>
+    </p>
     <form method="post"
           asp-page-handler="Cancelar"
           asp-route-id="@Model.Evento.Id"
