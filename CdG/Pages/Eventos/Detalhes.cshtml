@@ -45,6 +45,11 @@
            class="btn btn-primary">
             Editar evento
         </a>
+        <a asp-page="/Eventos/Adiar"
+           asp-route-id="@Model.Evento.Id"
+           class="btn btn-outline-primary">
+            Adiar ou reagendar
+        </a>
     </p>
     <form method="post"
           asp-page-handler="Cancelar"
