@@ -1,0 +1,59 @@
+﻿@page
+@model CdG.Pages.Eventos.IndexModel
+
+@{
+    ViewData["Title"] = "Meus eventos";
+}
+
+<h1>Meus eventos</h1>
+
+@if (!string.IsNullOrEmpty(Model.Mensagem))
+{
+    <div class="alert alert-success" role="status">
+        @Model.Mensagem
+    </div>
+}
+
+<p>
+    <a asp-page="/Eventos/Criar" class="btn btn-primary">
+        Criar evento
+    </a>
+</p>
+
+@if (Model.Eventos.Count == 0)
+{
+    <p>Você ainda não criou nenhum evento.</p>
+}
+else
+{
+    <p class="text-muted">Horários de Brasília.</p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Evento</th>
+                    <th>Data</th>
+                    <th>Local</th>
+                    <th>Situação</th>
+                    <th>Limite de participantes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var evento in Model.Eventos)
+                {
+                    <tr>
+                        <td>@evento.Nome</td>
+                        <td>@Model.FormatarData(evento.DataHora)</td>
+                        <td>@evento.Local</td>
+                        <td>@evento.Status</td>
+                        <td>
+                            @(evento.LimiteParticipantes?.ToString()
+                                ?? "Sem limite")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
