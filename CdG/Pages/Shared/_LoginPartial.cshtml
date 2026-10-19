@@ -1,12 +1,25 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
+@using CdG.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
+        var usuario = await UserManager.GetUserAsync(User);
+        var nomeExibido = string.IsNullOrWhiteSpace(usuario?.Nome)
+            ? "Minha conta"
+            : usuario.Nome;
         <li class="nav-item">
             <span class="nav-link text-dark">
-                Olá, @User.Identity?.Name!
+                <a class="nav-link text-dark"
+                   asp-area="Identity"
+                   asp-page="/Account/Manage/Index"
+                   title="Gerenciar minha conta">
+                    @(string.IsNullOrWhiteSpace(usuario?.Nome)
+                        ? nomeExibido
+                        : $"Olá, {nomeExibido}!")
+                </a>
             </span>
         </li>
         <li class="nav-item">

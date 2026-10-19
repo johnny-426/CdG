@@ -1,0 +1,314 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="page0" name="01 - Acesso e administração">
+    <mxGraphModel dx="1200" dy="850" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1200" pageHeight="1020">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" value="CdG — 01 - Acesso e administração" style="rounded=0;whiteSpace=wrap;html=0;verticalAlign=top;spacingTop=18;fontSize=19;fontStyle=1;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="240" y="25" width="720" height="850" />
+        </mxCell>
+        <mxCell id="u" value="Usuário" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=16;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="100" y="300" width="60" height="90" />
+        </mxCell>
+        <mxCell id="a" value="Administrador" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=16;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="300" width="60" height="90" />
+        </mxCell>
+        <mxCell id="e0u" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="u" target="uc0">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc0" value="Cadastrar conta" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="100" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e1u" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="u" target="uc1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e1a" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="a" target="uc1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc1" value="Entrar no sistema" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="186" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e2u" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="u" target="uc2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e2a" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="a" target="uc2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc2" value="Recuperar senha" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="272" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e3u" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="u" target="uc3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e3a" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="a" target="uc3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc3" value="Sair do sistema" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="358" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e4a" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="a" target="uc4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc4" value="Gerenciar usuários" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="444" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e5a" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="a" target="uc5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc5" value="Administrar permissões gerais" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="530" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e6a" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="a" target="uc6">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc6" value="Consultar informações gerenciais" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="616" width="420" height="60" />
+        </mxCell>
+        <mxCell id="note" value="Usuário representa quem utiliza a plataforma, inclusive antes de se autenticar.&#10;A administração da plataforma não concede participação automática em eventos." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=14;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="240" y="895" width="720" height="110" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page1" name="02 - Eventos e participantes">
+    <mxGraphModel dx="1200" dy="1040" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1200" pageHeight="1210">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" value="CdG — 02 - Eventos e participantes" style="rounded=0;whiteSpace=wrap;html=0;verticalAlign=top;spacingTop=18;fontSize=19;fontStyle=1;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="240" y="25" width="720" height="1040" />
+        </mxCell>
+        <mxCell id="u" value="Usuário" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=16;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="100" y="80" width="60" height="90" />
+        </mxCell>
+        <mxCell id="p" value="Participante" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=16;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="100" y="430" width="60" height="90" />
+        </mxCell>
+        <mxCell id="o" value="Organizador" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=16;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="230" width="60" height="90" />
+        </mxCell>
+        <mxCell id="c" value="Criador do evento" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=16;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="720" width="60" height="90" />
+        </mxCell>
+        <mxCell id="e0u" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="u" target="uc0">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc0" value="Criar evento" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="100" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e1o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc1" value="Editar evento" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="186" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e2o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc2" value="Convidar participantes" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="272" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e3p" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="p" target="uc3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc3" value="Responder convite" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="358" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e4p" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="p" target="uc4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc4" value="Cancelar participação" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="444" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e5p" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="p" target="uc5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e5o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc5" value="Consultar evento e participantes" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="530" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e6u" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="u" target="uc6">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc6" value="Consultar histórico de eventos" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="616" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e7c" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="c" target="uc7">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc7" value="Gerenciar organizadores" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="702" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e8c" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="c" target="uc8">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc8" value="Cancelar evento" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="788" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e9c" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="c" target="uc9">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc9" value="Excluir evento sem registros financeiros" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="874" width="420" height="60" />
+        </mxCell>
+        <mxCell id="note" value="O criador também exerce o papel de organizador. Papéis são definidos por evento.&#10;Responder convite permite confirmar ou recusar; exclusão exige ausência de registros financeiros." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=14;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="240" y="1085" width="720" height="110" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page2" name="03 - Despesas e acertos">
+    <mxGraphModel dx="1200" dy="954" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1200" pageHeight="1124">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" value="CdG — 03 - Despesas e acertos" style="rounded=0;whiteSpace=wrap;html=0;verticalAlign=top;spacingTop=18;fontSize=19;fontStyle=1;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="240" y="25" width="720" height="954" />
+        </mxCell>
+        <mxCell id="p" value="Participante" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=16;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="100" y="390" width="60" height="90" />
+        </mxCell>
+        <mxCell id="o" value="Organizador" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=16;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="390" width="60" height="90" />
+        </mxCell>
+        <mxCell id="e0o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc0">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc0" value="Gerenciar despesas e identificar pagador" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="100" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e1o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc1" value="Configurar divisão de cada despesa" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="186" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e2p" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="p" target="uc2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e2o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc2" value="Consultar despesas e saldo individual" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="272" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e3p" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="p" target="uc3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e3o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc3" value="Informar pagamento realizado" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="358" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e4o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc4" value="Validar pagamento informado" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="444" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e5p" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="p" target="uc5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e5o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc5" value="Oferecer contribuição extra" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="530" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e6o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc6">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc6" value="Concluir encontro" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="616" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e7o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc7">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc7" value="Fechar financeiro" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="702" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e8o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc8">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc8" value="Emitir relatório final" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="788" width="420" height="60" />
+        </mxCell>
+        <mxCell id="note" value="Contribuição extra: somente o titular pode dispor do próprio crédito.&#10;Validar pagamento permite confirmar ou rejeitar. Relatório final exige financeiro fechado.&#10;Fechamento exige saldos zerados e ausência de pagamentos aguardando validação." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=14;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="240" y="999" width="720" height="110" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page3" name="04 - Compras e acompanhamento">
+    <mxGraphModel dx="1200" dy="850" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1200" pageHeight="1020">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" value="CdG — 04 - Compras e acompanhamento" style="rounded=0;whiteSpace=wrap;html=0;verticalAlign=top;spacingTop=18;fontSize=19;fontStyle=1;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="240" y="25" width="720" height="850" />
+        </mxCell>
+        <mxCell id="p" value="Participante" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=16;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="100" y="320" width="60" height="90" />
+        </mxCell>
+        <mxCell id="o" value="Organizador" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=16;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="320" width="60" height="90" />
+        </mxCell>
+        <mxCell id="e0o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc0">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc0" value="Gerar lista de compras" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="100" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e1o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc1" value="Atualizar itens e marcar compras" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="186" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e2p" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="p" target="uc2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e2o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc2" value="Consultar lista de compras" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="272" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e3p" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="p" target="uc3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e3o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc3" value="Consultar sugestões de receitas" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="358" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e4p" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="p" target="uc4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e4o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc4" value="Consultar resumo financeiro do evento" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="444" width="420" height="60" />
+        </mxCell>
+        <mxCell id="e5p" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="p" target="uc5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e5o" style="endArrow=none;startArrow=none;html=0;strokeColor=#64748b;" edge="1" parent="1" source="o" target="uc5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="uc5" value="Consultar notificações" style="ellipse;whiteSpace=wrap;html=0;fontSize=16;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="390" y="530" width="420" height="60" />
+        </mxCell>
+        <mxCell id="note" value="Receitas são apoio opcional conforme o tipo de evento.&#10;As notificações decorrem das ações relevantes; seu disparo não exige um ator humano separado." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=14;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="240" y="895" width="720" height="110" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

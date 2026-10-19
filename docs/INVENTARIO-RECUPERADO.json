@@ -1,0 +1,172 @@
+[
+  {
+    "arquivo": "Apresentacao_CDG.pptx",
+    "bytes": 36823,
+    "sha256": "94b8a63631a4a22969b60f08a39672443ab678d94173406a5ce3e37d776ab49c"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/Adiar.cshtml.cs",
+    "bytes": 6673,
+    "sha256": "5fa561b9084a10d558832a1846412a09b81ec14a69d9d136604ab1b584e9310b"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/ApplicationDbContext.cs",
+    "bytes": 3185,
+    "sha256": "189c5beb25495d9e22646776f576733ccad42f7fdbe04a125e035d0d6cb7b163"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/CdG-DFD-N1.drawio.png",
+    "bytes": 148032,
+    "sha256": "7facecbfb6d1cc4665ac3d92892735894aabedaaee38e156d3a0da0a53cd464d"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/Churras da Galera (CdG).pdf",
+    "bytes": 496881,
+    "sha256": "319b10d5c590cd613ee87ead1f952b256ef653eab5d362daeb9fd57d0fa8d678"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/Convidar.cshtml.cs",
+    "bytes": 6811,
+    "sha256": "6aa4ce383eb37960678956f0863c1dc63a08de6924a4f665a29dd03e73708f73"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/Convite.cs",
+    "bytes": 668,
+    "sha256": "3c2b7387b757b8ecbbb62c8935cda21b7308276c5e06a0b30e87aa149ce227d8"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/Criar.cshtml.cs",
+    "bytes": 3902,
+    "sha256": "bc7c30011ee58b47fd990e40777599dede14e6549d6bb2dd5cfb15ad4b77e060"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/DFD Nível 0 - CdG.drawio.png",
+    "bytes": 31098,
+    "sha256": "b9793f133b078d6938d45ec61e2fd1601a4ae53d3dab3f75c456e5a45f97fae2"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/DTE CdG.drawio.png",
+    "bytes": 66359,
+    "sha256": "4dd47f828525f9c2ab6d79c0c3bd64f8a1caf3b8e68711c65a64a817e00d9c15"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/Detalhes.cshtml.cs",
+    "bytes": 10962,
+    "sha256": "4c6378b4c48ab133de8c27b87dae14510695e40904ce06ba63ebe0a1bab778db"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/Editar.cshtml.cs",
+    "bytes": 5798,
+    "sha256": "5cf3f38c6ec14a3d70e8cd41acdc2ca01fdd92ebc6df1af72dc3e1bfad9368c8"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/Index.cshtml",
+    "bytes": 3944,
+    "sha256": "3a356e426d34aa1879197a8dcf40871bb0e8e73ca4db2855cbef8c0b718d110e"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/Index.cshtml(1).cs",
+    "bytes": 6017,
+    "sha256": "58a2aa4ef0c86a185d138ae3077f41bc233c964f9831209fb586dc8cdae86af3"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/Index.cshtml.cs",
+    "bytes": 5902,
+    "sha256": "1a1831b805ece28ae1a73144be6c9956f71a9e977faade3c5df3d9e604eed35b"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/NotificacaoService.cs",
+    "bytes": 1490,
+    "sha256": "f3391c6f4d5f91549758f767815d4ebec27afc8d1a350c541aee51074c11f498"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/TipoNotificacao.cs",
+    "bytes": 195,
+    "sha256": "8b18fd7ab1f8af417961e6864d5872110fe7823722d92b747b2bbd6db31ab4db"
+  },
+  {
+    "arquivo": "CdG - Churras da Galera/VinculoEvento.cs",
+    "bytes": 754,
+    "sha256": "3589bc70d22c4d768cbb340dccd9139f16fd3e88aae3d451453b4039a43f74ac"
+  },
+  {
+    "arquivo": "CdG Completo.zip",
+    "bytes": 58307824,
+    "sha256": "aae1a900aa694392e132c7dcc6536dd5e593d95e5ee90e9e9a9d2bd81224d41a"
+  },
+  {
+    "arquivo": "CdG-Casos-de-Uso-Financeiro.svg",
+    "bytes": 3555,
+    "sha256": "c3a18585b9534fc2c0846afac934089a2ac18ccbe7c56e403d28dd93fa457a1c"
+  },
+  {
+    "arquivo": "CdG-Casos-de-Uso.drawio",
+    "bytes": 24770,
+    "sha256": "33afdd992f3806408d6dbfd3a872203e08b905efbed0d31119839d4d4d9d9263"
+  },
+  {
+    "arquivo": "CdG-Classes-Apoio.svg",
+    "bytes": 6690,
+    "sha256": "77b6d12d689a19eafbcc136db0c51dc08dd52dfab15cf1eca2b03fd68203769d"
+  },
+  {
+    "arquivo": "CdG-Classes-Eventos.svg",
+    "bytes": 7427,
+    "sha256": "76c807ef78baccf1e6c28d7592a3c8a006d19e08e9b933190b0491ff38136a31"
+  },
+  {
+    "arquivo": "CdG-Classes-Financeiro.svg",
+    "bytes": 11637,
+    "sha256": "5e474d5acd75256e87854bc59a9b97a93b861e2d185b16cd526ccba8f9db721d"
+  },
+  {
+    "arquivo": "CdG-Correcoes.zip",
+    "bytes": 33482,
+    "sha256": "3f175d13029bc28938608f1b9ea227d32092d2e7fa8fa2e0c9f67917fe08d055"
+  },
+  {
+    "arquivo": "CdG-Despesas-Include.drawio",
+    "bytes": 4164,
+    "sha256": "d7fc5756a59b4d27e8e3367b326132a597a5638507a85acfc25b87de0b35e9d9"
+  },
+  {
+    "arquivo": "CdG-Despesas-Include.svg",
+    "bytes": 3142,
+    "sha256": "4ef2d341ca568ca7a1921c3b4747cc768db598c78d83d3e6661264b291735348"
+  },
+  {
+    "arquivo": "CdG-Diagrama-de-Classes.drawio",
+    "bytes": 50602,
+    "sha256": "23bfcee368b064f7ede9482b0db2d9c3438d832ff18a5c00999a608ebf01d79c"
+  },
+  {
+    "arquivo": "CdG-Pagamentos-Extend.drawio",
+    "bytes": 3558,
+    "sha256": "4899471bca7e7901b09c39b6b53bc80bdb1966d3f3859dd20835d5aa5b706e42"
+  },
+  {
+    "arquivo": "CdG-Pagamentos-Extend.svg",
+    "bytes": 2887,
+    "sha256": "fa87c19d492860b359fe590dcc21358a8dfce15318e9ef0ada156169f6ae38cc"
+  },
+  {
+    "arquivo": "CdG.zip",
+    "bytes": 27492480,
+    "sha256": "cc2bfaf76a9c6c16fb86be816e2a9fb27754013951ddf6ffc4426501d25af72e"
+  },
+  {
+    "arquivo": "CdG_Documentacao_Consolidada_v1.docx",
+    "bytes": 59579,
+    "sha256": "ab4d082b1af6ee87f8eafe32dc47f10e75dc8e83acb6b20b7607968542e2ef9f"
+  },
+  {
+    "arquivo": "CdG_Pacote_Documentacao_v1.zip",
+    "bytes": 503614,
+    "sha256": "eefa47a6e23af685ac65e082f674a79d67705e4fed585630186bc5703052e8c1"
+  },
+  {
+    "arquivo": "Data.zip",
+    "bytes": 63542,
+    "sha256": "5f7925a2d16c9f9e0815898febb5e82b8ea2e1db8820e62d931963311278b1b7"
+  }
+]

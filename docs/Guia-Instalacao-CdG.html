@@ -1,0 +1,190 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CdG — instalação e atualização</title><style>body{font:17px/1.65 system-ui,sans-serif;color:#19332c;background:#f3f6f4;margin:0}main{max-width:940px;margin:40px auto;background:white;padding:48px;border-top:8px solid #237451;border-radius:12px}h1,h2{line-height:1.25;color:#17513a}h2{margin-top:2em}pre{background:#eef3f0;padding:16px;overflow:auto;border-radius:8px}code{font-size:.88em}table{border-collapse:collapse;width:100%;font-size:.92em}td,th{border:1px solid #cbd9d1;padding:10px;text-align:left}th{background:#e9f1ed}a{color:#126849;overflow-wrap:anywhere}@media(max-width:650px){main{margin:0;padding:22px}table{display:block;overflow:auto}}@media print{body{background:white}main{margin:0;padding:0;border:0}pre,tr{break-inside:avoid}}</style><main><h1>CdG — guia de instalação e atualização</h1>
+<p>Versão integrada de 18/10/2026 · João Paulo Ramalho · Sistemas de Informação / Uniara</p>
+<p>Esta entrega continua o seu projeto. Base: <code>CdG Completo.zip</code> de 14/10/2026, com o pacote <code>CdG-Correcoes.zip</code> aplicado, acrescido do financeiro. Não foi criada uma aplicação substituta. Mantém Razor Pages, Identity, PostgreSQL, páginas existentes e migrations anteriores.</p>
+<h2>1. O que baixar e abrir</h2>
+<p>Extraia <code>CdG-v1-Completo.zip</code> em uma pasta NOVA, por exemplo <code>C:\Projetos\CdG-v1</code>. Dentro está a pasta <code>CdG</code>; nela há <code>CdG.slnx</code>, <code>README.md</code>, <code>Dockerfile</code>, <code>docs</code>, <code>tests</code> e a subpasta <code>CdG</code> com o projeto. Abra <strong>CdG.slnx</strong> no Visual Studio. Se a sua versão não abrir <code>.slnx</code>, abra diretamente <code>CdG\CdG.csproj</code>.</p>
+<p>Não extraia por cima da única cópia anterior. Esta entrega contém o projeto completo; o ZIP antigo de correções era apenas um patch. Preserve seu repositório antigo e seu histórico Git até validar esta versão. Não execute <code>git reset</code>, nem substitua a pasta <code>.git</code>.</p>
+<h2>2. Pré-requisitos</h2>
+<ul>
+<li>Windows com Visual Studio capaz de desenvolver para .NET 10; carga de trabalho <strong>ASP.NET e desenvolvimento Web</strong>.</li>
+<li>SDK .NET 10 (o <code>global.json</code> aceita a família 10.0 com avanço para versões de recursos posteriores).</li>
+<li>Seu PostgreSQL local em execução. O pgAdmin é opcional, mas facilita criar o banco.</li>
+<li>Acesso à internet no primeiro restore dos pacotes NuGet.</li>
+</ul>
+<p>No Terminal do Visual Studio: <code>dotnet --list-sdks</code>. Deve existir uma versão <code>10.0.xxx</code>. Não altere o TargetFramework para versões anteriores.</p>
+<h2>3. Criar um banco limpo para os testes</h2>
+<p>Como você informou que os dados antigos são descartáveis, o caminho mais simples é usar outro banco, preservando o anterior sem precisar apagá-lo.</p>
+<p>No pgAdmin: conecte ao servidor local → Databases → Create → Database → nome <strong>cdg_v1</strong> → Save. Use o usuário PostgreSQL que você já utilizava. Guarde a senha apenas no seu computador.</p>
+<h2>4. Configurar a conexão sem colocar senha no código</h2>
+<p>No Visual Studio, clique com o botão direito no projeto <strong>CdG</strong> → <strong>Gerenciar Segredos do Usuário</strong>. Configure:</p>
+<pre><code class="language-json">{
+  &quot;ConnectionStrings&quot;: {
+    &quot;DefaultConnection&quot;: &quot;Host=localhost;Port=5432;Database=cdg_v1;Username=postgres;Password=SUA_SENHA&quot;
+  }
+}
+</code></pre>
+<p>Troque usuário, senha e porta pelos seus dados. A chave precisa se chamar <strong>DefaultConnection</strong>. Como preservamos o UserSecretsId do projeto, essa configuração também pode ser lida pela cópia antiga no mesmo computador. Confira sempre o banco antes de executar migrations.</p>
+<p>Alternativa no terminal, dentro da pasta que contém <code>CdG.csproj</code>:</p>
+<pre><code class="language-powershell">dotnet user-secrets set &quot;ConnectionStrings:DefaultConnection&quot; &quot;Host=localhost;Port=5432;Database=cdg_v1;Username=postgres;Password=SUA_SENHA&quot;
+</code></pre>
+<h2>5. Restaurar, compilar e aplicar as migrations</h2>
+<p>No Visual Studio: <strong>Compilar → Recompilar Solução</strong>. Depois abra <strong>Ferramentas → Gerenciador de Pacotes NuGet → Console do Gerenciador de Pacotes</strong>. Selecione <strong>CdG</strong> como projeto padrão e execute, nessa ordem:</p>
+<pre><code class="language-powershell">Get-Migration
+Update-Database
+</code></pre>
+<p>A última migration desta entrega é <strong>20261018123556_AdicionarFinanceiro</strong>. Não execute <code>Add-Migration</code>: ela já está incluída, com Designer e snapshot gerados pelo EF. Todas as migrations anteriores foram preservadas. A migration <code>PreencherAceitesAntigos</code> já bloqueava seu próprio rollback; não tente retroceder através dela.</p>
+<p>Alternativa sem o console NuGet: na pasta do projeto, execute:</p>
+<pre><code class="language-powershell">dotnet restore
+dotnet build
+dotnet run -- --migrate
+</code></pre>
+<p>O último comando somente aplica migrations e encerra. Não inicia o site. Use um dos caminhos; não é necessário executar ambos. O arquivo <code>docs/MIGRACOES.sql</code> contém o SQL idempotente gerado pelo EF para análise ou aplicação administrada; não é necessário executá-lo manualmente junto com <code>Update-Database</code>.</p>
+<h2>6. Executar</h2>
+<p>Selecione o perfil <strong>https</strong> no Visual Studio e use <strong>Ctrl+F5</strong>. O perfil existente usa <code>https://localhost:7103</code> e <code>http://localhost:5171</code>. Se o Windows solicitar confiança no certificado local, aceite para desenvolvimento; alternativamente:</p>
+<pre><code class="language-powershell">dotnet dev-certs https --trust
+</code></pre>
+<p>No terminal, dentro de <code>CdG\CdG</code>:</p>
+<pre><code class="language-powershell">dotnet run --launch-profile https
+</code></pre>
+<p>Crie três contas fictícias, usando janelas/perfis separados do navegador. Em Development, não é exigida confirmação de e-mail e, sem SMTP, nenhuma mensagem é enviada. Recuperação de senha por e-mail depende de configurar SMTP.</p>
+<h2>7. Como usar o financeiro</h2>
+<ol>
+<li>Crie um evento com data próxima e convide as contas B e C. Confirme as três presenças, inclusive a do organizador se ele participar.</li>
+<li>Em <strong>Detalhes → Despesas e rateio</strong>, cada pessoa registra os gastos que ela própria pagou. Não registre transferências entre participantes como despesas.</li>
+<li>Antes do fechamento, o autor pode anular uma despesa errada e cadastrar a correta. O registro anulado permanece no histórico.</li>
+<li>Depois de chegar o horário, conclua o evento. Em caso de cancelamento, registre somente custos efetivos que não foram devolvidos; anule despesas reembolsadas antes de fechar.</li>
+<li>O organizador acessa o financeiro e <strong>fecha o rateio</strong>. A divisão usa todos os confirmados naquele momento. Cotas e despesas ficam imutáveis.</li>
+<li>Quem deve informa um pagamento feito fora do sistema. O recebedor entra na sua conta e confirma. Só então o saldo muda.</li>
+<li>Um pagamento incorreto ainda pendente pode ser cancelado por qualquer uma das duas pessoas. Acertos confirmados não têm estorno nesta versão: confira antes de confirmar.</li>
+<li>Quem tem crédito pode abrir mão de todo o restante. A confirmação é definitiva; gera registros de renúncia, reduzindo dívidas em ordem fixa de IDs até consumir o crédito. Não é divisão proporcional da doação.</li>
+</ol>
+<p>Exemplo: A pagou R$ 100, B pagou R$ 20 e C não pagou nada. Total R$ 120; cota R$ 40. A recebe R$ 60, B paga R$ 20 e C paga R$ 40. Após ambos os recebimentos confirmados, todos ficam com saldo zero.</p>
+<h2>8. Atualizar seu banco antigo, se preferir</h2>
+<p>Você também pode manter a conexão antiga e executar <code>Get-Migration</code> / <code>Update-Database</code>. A nova migration adiciona estruturas e não apaga os dados existentes. Ainda assim, faça backup antes de atualizar qualquer banco que deseje preservar. Não use <code>EnsureCreated</code> nem apague migrations para essa atualização.</p>
+<h2>9. Testes antes da apresentação</h2>
+<p>Use <code>docs/TESTES.md</code>. A compilação e os testes automatizados desta entrega estão registrados em <code>docs/VALIDACAO.md</code>. Para repetir os testes automatizados, a partir da pasta que contém <code>CdG.slnx</code>:</p>
+<pre><code class="language-powershell">dotnet run --project tests/CdG.Verificacao
+</code></pre>
+<p>Eles usam banco SQLite em memória e não modificam seu PostgreSQL. Não substituem os testes de concorrência no PostgreSQL e o uso das telas com três contas.</p>
+<h2>10. Problemas comuns</h2>
+<table>
+<thead>
+<tr>
+<th>Sintoma</th>
+<th>O que conferir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SDK / net10.0 não suportado</td>
+<td>Instale SDK .NET 10 e confira a compatibilidade do Visual Studio.</td>
+</tr>
+<tr>
+<td>DefaultConnection não configurada</td>
+<td>Segredos do usuário no projeto CdG; chave exata.</td>
+</tr>
+<tr>
+<td>Connection refused</td>
+<td>Serviço PostgreSQL, host e porta.</td>
+</tr>
+<tr>
+<td>Password authentication failed</td>
+<td>Usuário/senha PostgreSQL; não é a conta cadastrada no site.</td>
+</tr>
+<tr>
+<td>Database does not exist</td>
+<td>Crie <code>cdg_v1</code> ou ajuste o nome da conexão.</td>
+</tr>
+<tr>
+<td>Tabela ou coluna não existe</td>
+<td>Execute <code>Update-Database</code> no banco que está na conexão usada pelo aplicativo.</td>
+</tr>
+<tr>
+<td>Certificado HTTPS</td>
+<td>Execute <code>dotnet dev-certs https --trust</code>.</td>
+</tr>
+<tr>
+<td>Financeiro não fecha</td>
+<td>Evento deve estar concluído/cancelado; precisa de confirmados; todos os autores de despesas ativas precisam estar entre eles.</td>
+</tr>
+<tr>
+<td>Sair/cancelar presença bloqueado</td>
+<td>Anule suas despesas antes, ou permaneça no evento para os acertos.</td>
+</tr>
+<tr>
+<td>Evento sumiu após lixeira</td>
+<td>Em Meus eventos, exiba ocultos e restaure. Ocultar não apaga dados nem dívidas.</td>
+</tr>
+<tr>
+<td>Pagamento aguarda confirmação</td>
+<td>Entre como recebedor. Só ele confirma o recebimento.</td>
+</tr>
+</tbody>
+</table>
+<h2>11. Colocar na internet</h2>
+<p>Não exige reescrever o CdG. São necessários um serviço que execute ASP.NET Core/.NET 10 ou Docker, PostgreSQL acessível ao serviço, HTTPS e configuração de e-mail. A dificuldade principal é configurar esses serviços e validar o funcionamento. A contratação e publicação não foram realizadas nesta entrega.</p>
+<p>O projeto inclui um Dockerfile com compilação em duas etapas e execução sem root. A partir da pasta com <code>Dockerfile</code>, uma plataforma Docker pode executar:</p>
+<pre><code class="language-powershell">docker build -t cdg:v1 .
+</code></pre>
+<p>O container atende internamente na porta <strong>8080</strong>. A plataforma deve fornecer HTTPS externamente. Configure nela, sem commitar senhas:</p>
+<table>
+<thead>
+<tr>
+<th>Variável</th>
+<th>Valor / finalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ASPNETCORE_ENVIRONMENT</code></td>
+<td><code>Production</code></td>
+</tr>
+<tr>
+<td><code>ConnectionStrings__DefaultConnection</code></td>
+<td>Conexão Npgsql fornecida pelo PostgreSQL hospedado, com TLS conforme exigido pelo provedor.</td>
+</tr>
+<tr>
+<td><code>AllowedHosts</code></td>
+<td>Nome real do domínio do site.</td>
+</tr>
+<tr>
+<td><code>Smtp__Host</code></td>
+<td>Host SMTP.</td>
+</tr>
+<tr>
+<td><code>Smtp__Port</code></td>
+<td>Porta STARTTLS, normalmente 587.</td>
+</tr>
+<tr>
+<td><code>Smtp__Username</code></td>
+<td>Usuário SMTP.</td>
+</tr>
+<tr>
+<td><code>Smtp__Password</code></td>
+<td>Senha ou credencial de aplicação.</td>
+</tr>
+<tr>
+<td><code>Smtp__From</code></td>
+<td>Remetente autorizado no SMTP.</td>
+</tr>
+<tr>
+<td><code>ReverseProxy__KnownProxy</code></td>
+<td>IP do proxy confiável, quando necessário. A integração precisa ser ajustada à plataforma escolhida.</td>
+</tr>
+<tr>
+<td><code>DataProtection__KeysPath</code></td>
+<td>Pasta persistente e gravável para as chaves de autenticação, com acesso restrito.</td>
+</tr>
+</tbody>
+</table>
+<p>Em Production, o cadastro exige confirmação de e-mail. Configure e teste SMTP antes de abrir cadastros. O remetente implementado usa STARTTLS; não use uma configuração que exija TLS implícito na porta 465 sem adaptar o serviço.</p>
+<p>Execute <code>dotnet CdG.dll --migrate</code> em uma tarefa de implantação com acesso ao banco, antes de iniciar o site. Migrations não são executadas automaticamente em cada inicialização. Preserve o volume de chaves de Data Protection entre deploys; sua proteção em repouso depende do ambiente de hospedagem. Não habilite confiança irrestrita em cabeçalhos de proxy.</p>
+<p>Antes do uso externo: valide cadastro/confirmar e-mail/recuperar senha, configure backup do banco, revise o texto de privacidade com um contato real e trate a limitação de exclusão de contas com histórico. Esta versão pode servir como demonstração acadêmica; não está certificada para operação pública. O Dockerfile foi preparado, mas a imagem não foi construída aqui.</p>
+<p>Referências oficiais consultadas em 18/10/2026:</p>
+<ul>
+<li>https://learn.microsoft.com/aspnet/core/host-and-deploy/docker/building-net-docker-images</li>
+<li>https://learn.microsoft.com/aspnet/core/fundamentals/environments?view=aspnetcore-10.0</li>
+<li>https://learn.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer?view=aspnetcore-10.0</li>
+</ul>
+<h2>12. O que fica para depois</h2>
+<p>A exigência específica da extensão, o documento acadêmico final, a hospedagem efetiva, o rateio seletivo por despesa, estornos de acertos confirmados e a exclusão/anônimização de contas com histórico. O módulo de futebol permanece um projeto separado. Os diagramas antigos recuperados são referências históricas e não representam automaticamente todas as tabelas desta versão.</p></main></html>

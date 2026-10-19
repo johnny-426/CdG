@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
 namespace CdG.Models
@@ -6,6 +6,7 @@ namespace CdG.Models
     public class Evento
     {
         public int Id { get; set; }
+        public DateTime? FinanceiroFechadoEm { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -29,10 +30,11 @@ namespace CdG.Models
         [Required]
         public string CriadorId { get; set; } = string.Empty;
 
-        public IdentityUser Criador { get; set; } = null!;
+        public ApplicationUser Criador { get; set; } = null!;
 
         public DateTime CriadoEm { get; set; } = DateTime.UtcNow;
 
         public DateTime AtualizadoEm { get; set; } = DateTime.UtcNow;
+
     }
 }

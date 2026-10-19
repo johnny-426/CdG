@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# Credenciais e configurações locais do CdG (além das regras padrão do Visual Studio)
+**/secrets.json
+.env
+.env.*
+!*.env.example
+**/appsettings.Local.json
+**/appsettings.Production.local.json
+**/*.p12
+**/*.pem

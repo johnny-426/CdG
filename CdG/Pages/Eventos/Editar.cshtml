@@ -8,6 +8,8 @@
 <h1>Editar evento</h1>
 
 <form method="post" asp-route-id="@Model.EventoId">
+    <input type="hidden" asp-for="VersaoOriginal" />
+    <p><a asp-page="Editar" asp-route-id="@Model.EventoId">Recarregar os dados atuais</a> (descarta alterações não salvas)</p>
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="mb-3">

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Identity;
 
 namespace CdG.Models
 {
@@ -14,7 +13,7 @@ namespace CdG.Models
         [Required]
         public string UsuarioId { get; set; } = string.Empty;
 
-        public IdentityUser Usuario { get; set; } = null!;
+        public ApplicationUser Usuario { get; set; } = null!;
 
         public PapelEvento Papel { get; set; }
             = PapelEvento.Participante;
@@ -24,5 +23,11 @@ namespace CdG.Models
 
         public DateTime PresencaAtualizadaEm { get; set; }
             = DateTime.UtcNow;
+
+        public DateTime? ParticipacaoAceitaEm { get; set; }
+
+        public DateTime? SaiuEm { get; set; }
+
+        public DateTime? OcultadoDoHistoricoEm { get; set; }
     }
 }

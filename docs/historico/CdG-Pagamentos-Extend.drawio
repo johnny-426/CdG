@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="CdG-Pagamentos-Extend" name="Pagamentos e comprovante opcional">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1320" pageHeight="820">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system" value="CdG — Pagamentos e comprovante opcional" style="rounded=0;html=0;verticalAlign=top;spacingTop=20;fontSize=22;fontStyle=1;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="210" y="30" width="900" height="590" />
+        </mxCell>
+        <mxCell id="assoc0" style="endArrow=none;startArrow=none;strokeColor=#64748b;" edge="1" parent="1" source="p" target="inform">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="assoc1" style="endArrow=none;startArrow=none;strokeColor=#64748b;" edge="1" parent="1" source="o" target="validate">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel0" value="«extend»" style="dashed=1;endArrow=open;endFill=0;html=0;fontSize=17;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="attach" target="inform">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="inform" value="Informar pagamento&#10;realizado" style="ellipse;whiteSpace=wrap;html=0;fontSize=18;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="270" y="182" width="300" height="76" />
+        </mxCell>
+        <mxCell id="attach" value="Anexar comprovante" style="ellipse;whiteSpace=wrap;html=0;fontSize=18;fillColor=#e0f2fe;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="760" y="182" width="300" height="76" />
+        </mxCell>
+        <mxCell id="validate" value="Validar pagamento&#10;informado" style="ellipse;whiteSpace=wrap;html=0;fontSize=18;fillColor=#f1f5f9;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="750" y="432" width="300" height="76" />
+        </mxCell>
+        <mxCell id="p" value="Participante" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=18;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="65" y="140" width="60" height="90" />
+        </mxCell>
+        <mxCell id="o" value="Organizador" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=0;fontSize=18;fillColor=#ffffff;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1170" y="395" width="60" height="90" />
+        </mxCell>
+        <mxCell id="notes" value="«extend»: anexar comprovante ocorre somente se o participante escolher enviar um arquivo.&#10;Ponto de extensão em Informar pagamento: complementar dados antes de enviar o registro.&#10;Validar pagamento é outra ação: exige registro aguardando confirmação e permite confirmar ou rejeitar.&#10;O comprovante é opcional e não confirma automaticamente o recebimento.&#10;O organizador que paga também atua como participante; esta visão mostra os papéis na operação." style="text;whiteSpace=wrap;html=0;align=left;verticalAlign=top;fontSize=16;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="210" y="650" width="940" height="150" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

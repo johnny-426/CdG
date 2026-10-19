@@ -12,11 +12,11 @@ namespace CdG.Pages.Eventos
     public class CriarModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public CriarModel(
             ApplicationDbContext context,
-            UserManager<IdentityUser> userManager)
+            UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
@@ -90,7 +90,8 @@ namespace CdG.Pages.Eventos
                 UsuarioId = usuario.Id,
                 Papel = PapelEvento.Organizador,
                 StatusPresenca = StatusPresenca.Confirmada,
-                PresencaAtualizadaEm = agora
+                PresencaAtualizadaEm = agora,
+                ParticipacaoAceitaEm = agora
             };
 
             _context.VinculosEvento.Add(vinculoOrganizador);

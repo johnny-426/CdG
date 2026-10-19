@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using CdG.Data;
 using CdG.Models;
+using CdG.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,18 +13,24 @@ namespace CdG.Pages.Eventos
     [Authorize]
     public class EditarModel : PageModel
     {
+        private readonly NotificacaoService _notificacoes;
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public EditarModel(
-            ApplicationDbContext context,
-            UserManager<IdentityUser> userManager)
+    ApplicationDbContext context,
+    UserManager<ApplicationUser> userManager,
+    NotificacaoService notificacoes)
         {
             _context = context;
             _userManager = userManager;
+            _notificacoes = notificacoes;
         }
 
         public int EventoId { get; private set; }
+
+        [BindProperty]
+        public string? VersaoOriginal { get; set; }
 
         [BindProperty]
         public DadosEdicao Entrada { get; set; } = new();
@@ -35,11 +42,15 @@ namespace CdG.Pages.Eventos
             if (usuarioId == null)
                 return Challenge();
 
+            if (!await PermissoesEvento.EhOrganizadorAsync(
+        _context, id, usuarioId))
+            {
+                return NotFound();
+            }
+
             var evento = await _context.Eventos
                 .AsNoTracking()
-                .FirstOrDefaultAsync(evento =>
-                    evento.Id == id &&
-                    evento.CriadorId == usuarioId);
+                .FirstOrDefaultAsync(evento => evento.Id == id);
 
             if (evento == null)
                 return NotFound();
@@ -53,6 +64,7 @@ namespace CdG.Pages.Eventos
             }
 
             EventoId = evento.Id;
+            VersaoOriginal = VersaoEvento.Obter(evento);
 
             Entrada = new DadosEdicao
             {
@@ -72,13 +84,28 @@ namespace CdG.Pages.Eventos
             if (usuarioId == null)
                 return Challenge();
 
-            var evento = await _context.Eventos
-                .FirstOrDefaultAsync(evento =>
-                    evento.Id == id &&
-                    evento.CriadorId == usuarioId);
+            await using var transacao =
+    await _context.Database.BeginTransactionAsync();
+
+            var eventos = await _context.Eventos
+    .FromSqlInterpolated($"""
+        SELECT *
+        FROM "Eventos"
+        WHERE "Id" = {id}
+        FOR UPDATE
+        """)
+    .ToListAsync();
+
+            var evento = eventos.SingleOrDefault();
 
             if (evento == null)
                 return NotFound();
+
+            if (!await PermissoesEvento.EhOrganizadorAsync(
+        _context, evento.Id, usuarioId))
+            {
+                return NotFound();
+            }
 
             if (!PodeEditar(evento))
             {
@@ -90,16 +117,59 @@ namespace CdG.Pages.Eventos
 
             EventoId = evento.Id;
 
+            if (VersaoOriginal != VersaoEvento.Obter(evento))
+            {
+                ModelState.AddModelError(string.Empty,
+                    "O evento foi alterado desde que você abriu esta página. " +
+                    "Recarregue a página e confira os dados antes de salvar novamente.");
+                return Page();
+            }
+
             if (!ModelState.IsValid)
                 return Page();
 
+            if (Entrada.LimiteParticipantes.HasValue)
+            {
+                var totalConfirmados = await _context.VinculosEvento.Ativos()
+                    .CountAsync(vinculo =>
+                        vinculo.EventoId == evento.Id &&
+                        vinculo.StatusPresenca == StatusPresenca.Confirmada);
+
+                if (Entrada.LimiteParticipantes.Value < totalConfirmados)
+                {
+                    ModelState.AddModelError(
+                        "Entrada.LimiteParticipantes",
+                        $"O evento já tem {totalConfirmados} presença(s) confirmada(s).");
+
+                    return Page();
+                }
+            }
+
+            var novoLocal = Entrada.Local.Trim();
+
+            var localMudou = !string.Equals(
+                evento.Local,
+                novoLocal,
+                StringComparison.Ordinal);
+
             evento.Nome = Entrada.Nome.Trim();
             evento.Descricao = Entrada.Descricao?.Trim();
-            evento.Local = Entrada.Local.Trim();
+            evento.Local = novoLocal;
             evento.LimiteParticipantes = Entrada.LimiteParticipantes;
             evento.AtualizadoEm = DateTime.UtcNow;
 
+            if (localMudou)
+            {
+                await _notificacoes.AvisarParticipantesAsync(
+                    evento.Id,
+                    usuarioId,
+                    TipoNotificacao.AlteracaoLocal,
+                    $"O local do evento \"{evento.Nome}\" foi alterado para: " +
+                    $"{evento.Local}. Confira os detalhes.");
+            }
+
             await _context.SaveChangesAsync();
+            await transacao.CommitAsync();
 
             TempData["Mensagem"] = "Evento atualizado com sucesso.";
 
