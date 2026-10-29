@@ -112,7 +112,6 @@ docs/                  # Tutoriais, testes, diagramas históricos
 | [Instalação detalhada](docs/INSTALACAO.md) | Preparar ambiente, User Secrets e migrations. |
 | [Roteiro de testes](docs/TESTES.md) | Validar regras com mais de um usuário e cenários financeiros. |
 | [Validação e limites](docs/VALIDACAO.md) | Distinguir testes realizados das verificações ainda pendentes. |
-| [Como publicar no GitHub](docs/PUBLICACAO_GITHUB.md) | Atualizar o repositório sem perder histórico nem divulgar segredos. |
 | [Diagramas e documentos anteriores](docs/historico/) | Material acadêmico de apoio; pode não refletir todas as regras financeiras atuais. |
 
 ### Testes automatizados
@@ -125,10 +124,4 @@ Esse executável valida parte do rateio e das operações financeiras com **SQLi
 
 ## Limitações e próximos passos
 
-O rateio é igual entre participantes confirmados; não há rateio por consumo, cobrança automática ou gateway de pagamento. Pagamentos confirmados não possuem estorno e o fechamento do financeiro é definitivo. O cancelamento não quita automaticamente dívidas. A interface completa, acessibilidade, confirmação por e-mail em produção, testes de concorrência com PostgreSQL e implantação externa ainda precisam ser revisados. Para publicação na internet também serão necessários HTTPS, SMTP, proteção das chaves de Data Protection, configuração segura de proxy e backup do banco.
-
-Capturas reais da aplicação serão acrescentadas antes da divulgação pública. Evite imagens com e-mails, senhas ou dados de terceiros.
-
-## Autoria e contexto
-
-Desenvolvido por **João Paulo Ramalho** como parte de seus estudos em **Sistemas de Informação — Uniara**, com continuidade além das entregas acadêmicas. O propósito do repositório é demonstrar evolução prática em desenvolvimento web, banco de dados, regras de negócio e documentação técnica.
+O rateio é igual entre participantes confirmados; não há rateio por consumo, cobrança automática ou gateway de pagamento. Pagamentos confirmados não possuem estorno e o fechamento do financeiro é definitivo. O cancelamento não quita automaticamente dívidas. A interface completa, acessibilidade, confirmação por e-mail em produção, testes de concorrência com PostgreSQL e implantação externa ainda precisam ser revisados. Para publicação na internet também serão necessários HTTPS, SMTP, proteção das chaves de Data Protection, configuração segura de proxy e backup.
